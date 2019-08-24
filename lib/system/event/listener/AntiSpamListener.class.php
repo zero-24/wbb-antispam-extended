@@ -113,7 +113,7 @@ class AntiSpamListener implements IParameterizedEventListener
 	 *
 	 * @since   1.0.0
 	 */
-	private function checkContent($text)
+	private function checkContent($text): bool
 	{
 		$whitelistedChars = explode(',', POST_ANTISPAMEXTENDED_WHITELIST);
 		$whitelistedChars = array_merge($whitelistedChars, $this->globalWitelistedChars);
