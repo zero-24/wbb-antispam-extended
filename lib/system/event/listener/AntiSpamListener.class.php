@@ -27,6 +27,7 @@ class AntiSpamListener implements IParameterizedEventListener
 		'ä',
 		'ü',
 		'ö',
+		'´',
 	];
 
 	/**
