@@ -89,7 +89,7 @@ class AntiSpamListener implements IParameterizedEventListener
 							$eventObj->delete();
 							break;
 
-							case 'deleteCompletely':
+						case 'deleteCompletely':
 							$eventObj->deleteCompletely();
 							break;
 
