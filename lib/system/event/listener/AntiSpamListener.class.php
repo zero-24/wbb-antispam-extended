@@ -98,7 +98,6 @@ class AntiSpamListener implements IParameterizedEventListener
 
 						case 'trash':
 						$eventObj->trash();
-
 						break;
 
 					case 'disable':
