@@ -1,6 +1,6 @@
 # [WBB] Anti-Spam Extended
 
-This is an generic anti-spam plugin that blocks posts and threads with non-ascii chars
+This is an generic anti-spam plugin that disables or deletes posts and threads with non-ascii chars.
 
 ## Download and Install
 
