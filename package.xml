@@ -7,7 +7,7 @@
 		<packagedescription>Generic Anti Spam Plugin that blocks posts and threads with non-ascii chars</packagedescription>
 		<packagedescription language="de"><![CDATA[Generisches Anti-Spam-Plugin, das Beiträge und Themen mit nicht-ascii Zeichen blockiert.]]></packagedescription>
 		<packagedescription language="de-informal"><![CDATA[Generisches Anti-Spam-Plugin, das Beiträge und Themen mit nicht-ascii Zeichen blockiert.]]></packagedescription>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<date>2019-08-24</date>
 		<license>GPL</license>
 	</packageinformation>
