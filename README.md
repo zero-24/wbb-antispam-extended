@@ -14,6 +14,10 @@ The options of the plugin can be found in the ACP under "Configuration" -> "Foru
 
 In addition, the plugin can be turned off for each user group. The user group option can be found under "Users" -> "List User Groups" -> "General Permissions" -> "Forum".
 
+## Plugin Store
+
+This plugin can also been found in the Woltlab Plugin Store: [[WBB] Anti-Spam Extended](https://pluginstore.woltlab.com/file/3062-wbb-anti-spam-extended/)
+
 ## Thanks
 
 This plugin is inspired by [wbb-link-restriction](https://github.com/OliverSchloebe/wbb-link-restriction) written by @oliverschloebe 
