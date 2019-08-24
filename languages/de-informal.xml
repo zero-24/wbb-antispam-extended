@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="https://www.woltlab.com" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.woltlab.com/XSD/language.xsd" languagecode="de-informal">
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.user.board.canBypassAntiSpamExtended"><![CDATA[Alle Zeichen ohne Beschränkung in Beiträgen verwenden]]></item>
+		<item name="wcf.acp.group.option.user.board.canBypassAntiSpamExtended.description"><![CDATA[Mitglieder dieser Benutzergruppe können alle Zeichen beliebig in Beiträgen verwenden, unabhängig von den Anti-Spam Beschränkungen]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.post_antispamextended_enable"><![CDATA[AntiSpam Extended aktivieren]]></item>
+		<item name="wcf.acp.option.post_antispamextended_enable.description"><![CDATA[Aktiviert das AntiSpam Extended Plugin. Diese überprüft neue Beiträge von Benutzern mit wenigen Beiträgen, ob diese non-ascii Zeichen enthalten sodass diese z.B. zuerst von einem Moderator geprüft werden können.]]></item>
+		<item name="wcf.acp.option.post_antispamextended_min_posts"><![CDATA[Mindestbeitragszahl]]></item>
+		<item name="wcf.acp.option.post_antispamextended_min_posts.description"><![CDATA[Hat der Benutzer mehr Beiträge als die hier angegeben Zahl, greift die Überprüfung nicht mehr.]]></item>
+		<item name="wcf.acp.option.post_antispamextended_action"><![CDATA[Aktion]]></item>
+		<item name="wcf.acp.option.post_antispamextended_action.description"><![CDATA[Was soll mit den Beiträgen passieren, deaktiven, löschen oder endgültig löschen]]></item>
+		<item name="wcf.acp.option.post_antispamextended_whitelist"><![CDATA[Zeichen Whitelist]]></item>
+		<item name="wcf.acp.option.post_antispamextended_whitelist.description"><![CDATA[Eine komma-separierte Liste von zusätzlichen Zeichen welche erlaubt sein sollen.]]></item>
+	</category>
+</language>

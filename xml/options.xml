@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/options.xsd">
+	<import>
+		<options>
+			<option name="post_antispamextended_enable">
+				<categoryname>board.post.add</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<enableoptions>post_antispamextended_min_posts,post_antispamextended_action,post_antispamextended_whitelist</enableoptions>
+			</option>
+			<option name="post_antispamextended_min_posts">
+				<categoryname>board.post.add</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>10</defaultvalue>
+			</option>
+			<option name="post_antispamextended_action">
+				<categoryname>board.post.add</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue>disable</defaultvalue>
+				<selectoptions><![CDATA[disable
+delete
+deleteCompletly]]></selectoptions>
+			</option>
+			<option name="post_antispamextended_whitelist">
+				<categoryname>board.post.add</categoryname>
+				<optiontype>text</optiontype>
+				<defaultvalue/>
+			</option>
+		</options>
+	</import>
+</data>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="https://www.woltlab.com" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.woltlab.com/XSD/language.xsd" languagecode="en">
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.user.board.canBypassAntiSpamExtended"><![CDATA[Use all characters without restriction]]></item>
+		<item name="wcf.acp.group.option.user.board.canBypassAntiSpamExtended.description"><![CDATA[Members of this user group can use any character in posts, regardless of anti-spam restrictions.]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.post_antispamextended_enable"><![CDATA[Activate AntiSpam Extended]]></item>
+		<item name="wcf.acp.option.post_antispamextended_enable.description"><![CDATA[Activates the AntiSpam Extended Plugin. It checks new posts from users with few posts, if they contain non-ascii characters so that they can be checked e.g. first by a moderator.]]></item>
+		<item name="wcf.acp.option.post_antispamextended_min_posts"><![CDATA[Minimum post count]]></item>
+		<item name="wcf.acp.option.post_antispamextended_min_posts.description"><![CDATA[If the user has more posts than the number specified here, the check no longer applies.]]></item>
+		<item name="wcf.acp.option.post_antispamextended_action"><![CDATA[action]]></item>
+		<item name="wcf.acp.option.post_antispamextended_action.description"><![CDATA[What should happen to the posts, deactivate them, delete them or delete them permanently?]]></item>
+		<item name="wcf.acp.option.post_antispamextended_whitelist"><![CDATA[Character Whitelist]]></item>
+		<item name="wcf.acp.option.post_antispamextended_whitelist.description"><![CDATA[A comma-separated list of additional characters that should be allowed.]]></item>
+	</category>
+</language>

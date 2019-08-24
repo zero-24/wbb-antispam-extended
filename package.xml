@@ -8,7 +8,7 @@
 		<packagedescription language="de"><![CDATA[Generisches Anti-Spam-Plugin, das Beiträge und Themen mit nicht-ascii Zeichen blockiert.]]></packagedescription>
 		<packagedescription language="de-informal"><![CDATA[Generisches Anti-Spam-Plugin, das Beiträge und Themen mit nicht-ascii Zeichen blockiert.]]></packagedescription>
 		<version>1.0.0</version>
-		<date>2019-08-23</date>
+		<date>2019-08-24</date>
 		<license>GPL</license>
 	</packageinformation>
 
@@ -20,15 +20,20 @@
 	<requiredpackages>
 		<requiredpackage minversion="3.0.0">com.woltlab.wcf</requiredpackage>
 	</requiredpackages>
-	
 
 	<instructions type="install">
 		<instruction type="file" application="wbb">files.tar</instruction>
+		<instruction type="option">xml/options.xml</instruction>
+		<instruction type="userGroupOption">xml/groupoptions.xml</instruction>
 		<instruction type="eventListener">xml/eventlistener.xml</instruction>
+		<instruction type="language">languages/*.xml</instruction>
 	</instructions>
 
 	<instructions type="update" fromversion="*">
 		<instruction type="file" application="wbb">files.tar</instruction>
+		<instruction type="option">xml/options.xml</instruction>
+		<instruction type="userGroupOption">xml/groupoptions.xml</instruction>
 		<instruction type="eventListener">xml/eventlistener.xml</instruction>
+		<instruction type="language">languages/*.xml</instruction>
 	</instructions>
 </package>
