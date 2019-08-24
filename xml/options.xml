@@ -19,7 +19,7 @@
 				<defaultvalue>disable</defaultvalue>
 				<selectoptions><![CDATA[disable
 delete
-deleteCompletly]]></selectoptions>
+deleteCompletely]]></selectoptions>
 			</option>
 			<option name="post_antispamextended_whitelist">
 				<categoryname>board.post.add</categoryname>
