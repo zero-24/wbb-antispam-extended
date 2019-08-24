@@ -10,7 +10,7 @@
 		<item name="wcf.acp.option.post_antispamextended_min_posts"><![CDATA[Minimum post count]]></item>
 		<item name="wcf.acp.option.post_antispamextended_min_posts.description"><![CDATA[If the user has more posts than the number specified here, the check no longer applies.]]></item>
 		<item name="wcf.acp.option.post_antispamextended_action"><![CDATA[action]]></item>
-		<item name="wcf.acp.option.post_antispamextended_action.description"><![CDATA[What should happen to the posts, deactivate them, delete them or delete them permanently?]]></item>
+		<item name="wcf.acp.option.post_antispamextended_action.description"><![CDATA[What should happen to the posts, deactivate them, trash them or delete them.]]></item>
 		<item name="wcf.acp.option.post_antispamextended_whitelist"><![CDATA[Character Whitelist]]></item>
 		<item name="wcf.acp.option.post_antispamextended_whitelist.description"><![CDATA[A comma-separated list of additional characters that should be allowed.]]></item>
 	</category>

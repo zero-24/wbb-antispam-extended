@@ -48,59 +48,65 @@ class AntiSpamListener implements IParameterizedEventListener
 		$actionName = $eventObj->getActionName();
 		$parameters = $eventObj->getParameters();
 
-		switch ($actionName)
+		if (in_array($actionName, ['triggerPublication', 'update']))
 		{
-			case 'triggerPublication':
-			case 'update':
-				$objects = $eventObj->getObjects();
+			$objects = $eventObj->getObjects();
 
-				if (!is_object($objects[0]))
+			if (!is_object($objects[0]))
+			{
+				return;
+			}
+
+			// Make sure the execution is not disabled
+			if ($objects[0]->isDisabled
+				|| !POST_ANTISPAMEXTENDED_ENABLE
+				|| WCF::getSession()->getPermission('user.board.canBypassAntiSpamExtended')
+				|| WCF::getUser()->wbbPosts >= POST_ANTISPAMEXTENDED_MIN_POSTS)
+			{
+				return;
+			}
+
+			$title = $objects[0]->getTitle();
+
+			// On update we should get the message passed as parameter
+			if (isset($parameters['data']['message'])
+				&& !empty($parameters['data']['message']))
+			{
+				$content = $parameters['data']['message'];
+			}
+			else
+			{
+				$content = $objects[0]->getMessage();
+			}
+
+			if ($this->checkContent($content) || $this->checkContent($title))
+			{
+				// When this is the first post we should only disable it
+				if (isset($parameters['isFirstPost']) && $parameters['isFirstPost'] === true)
 				{
+					$eventObj->disable();
+
 					return;
 				}
 
-				// Make sure the execution is not disabled
-				if ($objects[0]->isDisabled
-					|| !POST_ANTISPAMEXTENDED_ENABLE
-					|| WCF::getSession()->getPermission('user.board.canBypassAntiSpamExtended')
-					|| WCF::getUser()->wbbPosts >= POST_ANTISPAMEXTENDED_MIN_POSTS)
+				// When it is not we can also delete it
+				switch (POST_ANTISPAMEXTENDED_ACTION)
 				{
-					return;
+					case 'delete':
+						$eventObj->delete();
+						break;
+
+						case 'trash':
+						$eventObj->trash();
+
+						break;
+
+					case 'disable':
+					default:
+						$eventObj->disable();
+						break;
 				}
-
-				// On update we should get the message passed as parameter
-				if (isset($parameters['data']['message'])
-					&& !empty($parameters['data']['message']))
-				{
-					$content = $parameters['data']['message'];
-				}
-				else
-				{
-					$content = $objects[0]->getMessage();
-				}
-
-				$title = $objects[0]->getTitle();
-
-				if ($this->checkContent($content) || $this->checkContent($title))
-				{
-					switch (POST_ANTISPAMEXTENDED_ACTION)
-					{
-						case 'delete':
-							$eventObj->delete();
-							break;
-
-						case 'deleteCompletely':
-							$eventObj->deleteCompletely();
-							break;
-
-						case 'disable':
-						default:
-							$eventObj->disable();
-							break;
-					}
-				}
-
-				break;
+			}
 		}
 	}
 

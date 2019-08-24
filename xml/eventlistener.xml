@@ -2,19 +2,13 @@
 <data xmlns="https://www.woltlab.com" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.woltlab.com/XSD/maelstrom/eventListener.xsd">
 	<import>
 		<!-- user -->
-		<eventlistener>
-				<eventclassname><![CDATA[wbb\data\post\ThreadAction]]></eventclassname>
-				<eventname>finalizeAction</eventname>
-				<listenerclassname><![CDATA[wbb\system\event\listener\AntiSpamListener]]></listenerclassname>
-				<environment>user</environment>
-				<inherit>1</inherit>
-		 </eventlistener>
-		<eventlistener>
+		<eventlistener name="AntiSpamPostActionUser">
 				<eventclassname><![CDATA[wbb\data\post\PostAction]]></eventclassname>
 				<eventname>finalizeAction</eventname>
 				<listenerclassname><![CDATA[wbb\system\event\listener\AntiSpamListener]]></listenerclassname>
 				<environment>user</environment>
 				<inherit>1</inherit>
+				<nicevalue>120</nicevalue>
 		 </eventlistener>
 		<!-- /user -->
 	</import>
