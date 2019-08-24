@@ -53,7 +53,7 @@ class AntiSpamListener implements IParameterizedEventListener
 			case 'update':
 				$objects = $eventObj->getObjects();
 
-				if (empty($objects[0]))
+				if (!is_object($objects[0]))
 				{
 					return;
 				}
