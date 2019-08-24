@@ -81,8 +81,10 @@ class AntiSpamListener implements IParameterizedEventListener
 
 			if ($this->checkContent($content) || $this->checkContent($title))
 			{
-				// When this is the first post we should only disable it
-				if (isset($parameters['isFirstPost']) && $parameters['isFirstPost'] === true)
+				// When this is the first post or we edit an post we should only disable it
+				if (isset($parameters['isFirstPost'])
+					&& $parameters['isFirstPost'] === true
+					|| $actionName === 'update')
 				{
 					$eventObj->disable();
 
@@ -98,6 +100,7 @@ class AntiSpamListener implements IParameterizedEventListener
 
 						case 'trash':
 						$eventObj->trash();
+
 						break;
 
 					case 'disable':
