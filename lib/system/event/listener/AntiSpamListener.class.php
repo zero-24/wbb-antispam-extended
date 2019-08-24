@@ -68,7 +68,8 @@ class AntiSpamListener implements IParameterizedEventListener
 				}
 
 				// On update we should get the message passed as parameter
-				if (isset($parameters['data']['message']) && !empty($parameters['data']['message']))
+				if (isset($parameters['data']['message'])
+					&& !empty($parameters['data']['message']))
 				{
 					$content = $parameters['data']['message'];
 				}
