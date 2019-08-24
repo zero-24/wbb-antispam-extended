@@ -3,13 +3,13 @@
 	<import>
 		<!-- user -->
 		<eventlistener name="AntiSpamPostActionUser">
-				<eventclassname><![CDATA[wbb\data\post\PostAction]]></eventclassname>
-				<eventname>finalizeAction</eventname>
-				<listenerclassname><![CDATA[wbb\system\event\listener\AntiSpamListener]]></listenerclassname>
-				<environment>user</environment>
-				<inherit>1</inherit>
-				<nicevalue>120</nicevalue>
-		 </eventlistener>
+			<eventclassname>wbb\data\post\PostAction</eventclassname>
+			<eventname>finalizeAction</eventname>
+			<listenerclassname>wbb\system\event\listener\AntiSpamPostActionListener</listenerclassname>
+			<environment>user</environment>
+			<inherit>1</inherit>
+			<niceValue>120</niceValue>
+		</eventlistener>
 		<!-- /user -->
 	</import>
 </data>

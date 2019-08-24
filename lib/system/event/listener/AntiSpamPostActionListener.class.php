@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     zero-24.antispam.extended
- * @copyright   Copyright (C) 2005 - 2019 Tobias Zulauf (https://forum.joomla.de) Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Tobias Zulauf (https://forum.joomla.de). All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 namespace wbb\system\event\listener;
@@ -14,7 +14,7 @@ use wcf\system\WCF;
  *
  * @since  1.0.0
  */
-class AntiSpamListener implements IParameterizedEventListener
+class AntiSpamPostActionListener implements IParameterizedEventListener
 {
 	/**
 	 * Whitelisted chars that should be excluded from the checks
