@@ -22,7 +22,12 @@ class AntiSpamListener implements IParameterizedEventListener
 	 * @var     array
 	 * @since   1.0.0
 	 */
-	private $whitelistedChars = ['ß'];
+	private $globalWitelistedChars = [
+		'ß',
+		'ä',
+		'ü',
+		'ö',
+	];
 
 	/**
 	 * The Event Listener execute method that handles the checks
@@ -39,12 +44,6 @@ class AntiSpamListener implements IParameterizedEventListener
 	 */
 	public function execute($eventObj, $className, $eventName, array &$parameters)
 	{
-		// The restrictions should only apply to users with less than 5 posts
-		if (WCF::getUser()->wbbPosts >= 5)
-		{
-			return;
-		}
-
 		$actionName = $eventObj->getActionName();
 		$parameters = $eventObj->getParameters();
 
@@ -55,6 +54,15 @@ class AntiSpamListener implements IParameterizedEventListener
 				$objects = $eventObj->getObjects();
 
 				if (empty($objects[0]))
+				{
+					return;
+				}
+
+				// Make sure the execution is not disabled
+				if ($objects[0]->isDisabled
+					|| !POST_ANTISPAMEXTENDED_ENABLE
+					|| WCF::getSession()->getPermission('user.board.canBypassAntiSpamExtended')
+					|| WCF::getUser()->wbbPosts >= POST_ANTISPAMEXTENDED_MIN_POSTS)
 				{
 					return;
 				}
@@ -73,10 +81,23 @@ class AntiSpamListener implements IParameterizedEventListener
 
 				if ($this->checkContent($content) || $this->checkContent($title))
 				{
-					$eventObj->disable();
-					//$eventObj->delete();
-					//$eventObj->deleteCompletely();
+					switch (POST_ANTISPAMEXTENDED_ACTION)
+					{
+						case 'delete':
+							$eventObj->delete();
+							break;
+
+							case 'deleteCompletely':
+							$eventObj->deleteCompletely();
+							break;
+
+						case 'disable':
+						default:
+							$eventObj->disable();
+							break;
+					}
 				}
+
 				break;
 		}
 	}
@@ -92,19 +113,25 @@ class AntiSpamListener implements IParameterizedEventListener
 	 */
 	private function checkContent($text)
 	{
+		$whitelistedChars = explode(',', POST_ANTISPAMEXTENDED_WHITELIST);
+		$whitelistedChars = array_merge($whitelistedChars, $this->globalWitelistedChars);
+
 		// Make sure the whitelisted chars does not trigger the checker
-		foreach ($this->whitelistedChars as $whitelistedChar)
+		foreach ($whitelistedChars as $whitelistedChar)
 		{
 			$text = str_replace($whitelistedChar, '', $text);
+
+			$whitelistedChar = strtoupper($whitelistedChar);
+			$text = str_replace($whitelistedChar, '', $text);
 		}
-		
+
 		$clearstring = filter_var($text, FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
-		
+
 		if ($clearstring != $text)
 		{
 			return true;
 		}
-		
+
 		return false;
 	}
 }
