@@ -28,6 +28,7 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 		'ü',
 		'ö',
 		'´',
+		'€',
 	];
 
 	/**
@@ -60,8 +61,17 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 			// Make sure the execution is not disabled
 			if ($objects[0]->isDisabled
 				|| !POST_ANTISPAMEXTENDED_ENABLE
-				|| WCF::getSession()->getPermission('user.board.canBypassAntiSpamExtended')
-				|| WCF::getUser()->wbbPosts >= POST_ANTISPAMEXTENDED_MIN_POSTS)
+				|| WCF::getSession()->getPermission('user.board.canBypassAntiSpamExtended'))
+			{
+				return;
+			}
+
+			/**
+			 * Make sure the user passes the min_post option and also make
+			 * sure the checks are enforced anyway when the value is set to 0
+			 */
+			if (WCF::getUser()->wbbPosts >= POST_ANTISPAMEXTENDED_MIN_POSTS
+				&& POST_ANTISPAMEXTENDED_MIN_POSTS >= 1)
 			{
 				return;
 			}

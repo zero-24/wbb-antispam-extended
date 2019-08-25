@@ -8,7 +8,7 @@
 		<item name="wcf.acp.option.post_antispamextended_enable"><![CDATA[Activate AntiSpam Extended]]></item>
 		<item name="wcf.acp.option.post_antispamextended_enable.description"><![CDATA[Activates the AntiSpam Extended Plugin. It checks new posts from users with few posts, if they contain non-ascii characters so that they can be checked e.g. first by a moderator.]]></item>
 		<item name="wcf.acp.option.post_antispamextended_min_posts"><![CDATA[Minimum post count]]></item>
-		<item name="wcf.acp.option.post_antispamextended_min_posts.description"><![CDATA[If the user has more posts than the number specified here, the check no longer applies.]]></item>
+		<item name="wcf.acp.option.post_antispamextended_min_posts.description"><![CDATA[If the user has more posts than the number specified here, the check no longer applies. If the value is set to 0, this option is disabled.]]></item>
 		<item name="wcf.acp.option.post_antispamextended_action"><![CDATA[action]]></item>
 		<item name="wcf.acp.option.post_antispamextended_action.description"><![CDATA[What should happen to the posts, deactivate them, trash them or delete them. New Threads get anyway just deactivated.]]></item>
 		<item name="wcf.acp.option.post_antispamextended_whitelist"><![CDATA[Character Whitelist]]></item>
