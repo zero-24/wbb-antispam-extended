@@ -141,7 +141,7 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 		{
 			$text = str_replace($whitelistedChar, '', $text);
 
-			$whitelistedChar = strtoupper($whitelistedChar);
+			$whitelistedChar = mb_strtoupper($whitelistedChar, 'UTF-8');
 			$text = str_replace($whitelistedChar, '', $text);
 		}
 
