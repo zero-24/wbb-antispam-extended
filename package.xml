@@ -29,17 +29,17 @@
 
 	<instructions type="install">
 		<instruction type="file" application="wbb">files.tar</instruction>
-		<instruction type="option">xml/options.xml</instruction>
-		<instruction type="userGroupOption">xml/groupoptions.xml</instruction>
-		<instruction type="eventListener">xml/eventlistener.xml</instruction>
+		<instruction type="option">xml/option.xml</instruction>
+		<instruction type="userGroupOption">xml/userGroupOption.xml</instruction>
+		<instruction type="eventListener">xml/eventListener.xml</instruction>
 		<instruction type="language">languages/*.xml</instruction>
 	</instructions>
 
 	<instructions type="update" fromversion="*">
 		<instruction type="file" application="wbb">files.tar</instruction>
-		<instruction type="option">xml/options.xml</instruction>
-		<instruction type="userGroupOption">xml/groupoptions.xml</instruction>
-		<instruction type="eventListener">xml/eventlistener.xml</instruction>
+		<instruction type="option">xml/option.xml</instruction>
+		<instruction type="userGroupOption">xml/userGroupOption.xml</instruction>
+		<instruction type="eventListener">xml/eventListener.xml</instruction>
 		<instruction type="language">languages/*.xml</instruction>
 	</instructions>
 </package>
