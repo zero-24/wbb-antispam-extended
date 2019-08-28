@@ -30,6 +30,8 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 		'´',
 		'€',
 		'°',
+		'“',
+		'„',
 	];
 
 	/**
