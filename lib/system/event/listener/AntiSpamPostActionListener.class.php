@@ -77,8 +77,6 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 				return;
 			}
 
-			$title = $objects[0]->getTitle();
-
 			// On update we should get the message passed as parameter
 			if (isset($parameters['data']['message'])
 				&& !empty($parameters['data']['message']))
@@ -88,6 +86,17 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 			else
 			{
 				$content = $objects[0]->getMessage();
+			}
+
+			// On update we should get the title passed as parameter
+			if (isset($parameters['data']['subject'])
+				&& !empty($parameters['data']['subject']))
+			{
+				$title = $parameters['data']['subject'];
+			}
+			else
+			{
+				$title = $objects[0]->getTitle();
 			}
 
 			if ($this->checkContent($content) || $this->checkContent($title))
