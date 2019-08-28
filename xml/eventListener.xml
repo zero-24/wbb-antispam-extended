@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="https://www.woltlab.com" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.woltlab.com/XSD/maelstrom/eventListener.xsd">
+	<import>
+		<!-- user -->
+		<eventlistener name="AntiSpamPostActionUser">
+			<eventclassname>wbb\data\post\PostAction</eventclassname>
+			<eventname>finalizeAction</eventname>
+			<listenerclassname>wbb\system\event\listener\AntiSpamPostActionListener</listenerclassname>
+			<environment>user</environment>
+			<inherit>1</inherit>
+			<niceValue>120</niceValue>
+		</eventlistener>
+		<!-- /user -->
+	</import>
+</data>
