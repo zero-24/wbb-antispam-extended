@@ -18,7 +18,6 @@
 	<compatibility>
 		<api version="2017" />
 		<api version="2018" />
-		<api version="2019" />
 	</compatibility>
 
 	<requiredpackages>
