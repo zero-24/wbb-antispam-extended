@@ -6,6 +6,7 @@
  */
 namespace wbb\system\event\listener;
 
+use wbb\data\post\PostAction;
 use wcf\system\event\listener\IParameterizedEventListener;
 use wcf\system\WCF;
 
@@ -123,7 +124,7 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 						&& $parameters['isFirstPost'] === true
 						|| $actionName === 'update')
 					{
-						(new \wbb\data\post\PostAction([$object], 'disable'))->executeAction();
+						(new PostAction([$object], 'disable'))->executeAction();
 
 						continue;
 					}
@@ -132,16 +133,16 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 					switch (POST_ANTISPAMEXTENDED_ACTION)
 					{
 						case 'delete':
-							(new \wbb\data\post\PostAction([$object], 'delete'))->executeAction();
+							(new PostAction([$object], 'delete'))->executeAction();
 							break;
 
 						case 'trash':
-							(new \wbb\data\post\PostAction([$object], 'trash'))->executeAction();
+							(new PostAction([$object], 'trash'))->executeAction();
 							break;
 
 						case 'disable':
 						default:
-							(new \wbb\data\post\PostAction([$object], 'disable'))->executeAction();
+							(new PostAction([$object], 'disable'))->executeAction();
 							break;
 					}
 				}
