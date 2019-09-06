@@ -36,6 +36,14 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 	];
 
 	/**
+	 * Make sure we only run our checks once
+	 *
+	 * @var     array
+	 * @since   1.0.3
+	 */
+	private $objectsChecked = [];
+
+	/**
 	 * The Event Listener execute method that handles the checks
 	 *
 	 * @param   object   $eventObj    The event object
@@ -55,80 +63,87 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 
 		if (in_array($actionName, ['triggerPublication', 'update']))
 		{
-			$objects = $eventObj->getObjects();
+			foreach ($eventObj->getObjects() as $object)
+			{
+				$objectId = $object->getObjectID();
 
-			if (!is_object($objects[0]))
-			{
-				return;
-			}
-
-			// Make sure the execution is not disabled
-			if ($objects[0]->isDisabled
-				|| !POST_ANTISPAMEXTENDED_ENABLE
-				|| WCF::getSession()->getPermission('user.board.canBypassAntiSpamExtended'))
-			{
-				return;
-			}
-
-			/**
-			 * Make sure the user passes the min_post option and also make
-			 * sure the checks are enforced anyway when the value is set to 0
-			 */
-			if (WCF::getUser()->wbbPosts >= POST_ANTISPAMEXTENDED_MIN_POSTS
-				&& POST_ANTISPAMEXTENDED_MIN_POSTS >= 1)
-			{
-				return;
-			}
-
-			// On update we should get the message passed as parameter
-			if (isset($parameters['data']['message'])
-				&& !empty($parameters['data']['message']))
-			{
-				$content = $parameters['data']['message'];
-			}
-			else
-			{
-				$content = $objects[0]->getMessage();
-			}
-
-			// On update we should get the title passed as parameter
-			if (isset($parameters['data']['subject'])
-				&& !empty($parameters['data']['subject']))
-			{
-				$title = $parameters['data']['subject'];
-			}
-			else
-			{
-				$title = $objects[0]->getTitle();
-			}
-
-			if ($this->checkContent($content) || $this->checkContent($title))
-			{
-				// When this is the first post or we edit an post we should only disable it
-				if (isset($parameters['isFirstPost'])
-					&& $parameters['isFirstPost'] === true
-					|| $actionName === 'update')
+				// Early exit in the case that we already checked this item
+				if (isset($this->objectsChecked[$objectId]) && $this->objectsChecked[$objectId])
 				{
-					$eventObj->disable();
-
-					return;
+					continue;
 				}
 
-				// When it is not we can also delete it
-				switch (POST_ANTISPAMEXTENDED_ACTION)
+				// Mark this objectId as checked
+				$this->objectsChecked[$objectId] = true;
+
+				// Make sure the execution is not disabled
+				if ($object->isDisabled
+					|| !POST_ANTISPAMEXTENDED_ENABLE
+					|| WCF::getSession()->getPermission('user.board.canBypassAntiSpamExtended'))
 				{
-					case 'delete':
-						$eventObj->delete();
-						break;
+					continue;
+				}
+
+				/**
+				 * Make sure the user passes the min_post option and also make
+				 * sure the checks are enforced anyway when the value is set to 0
+				 */
+				if (WCF::getUser()->wbbPosts >= POST_ANTISPAMEXTENDED_MIN_POSTS
+					&& POST_ANTISPAMEXTENDED_MIN_POSTS >= 1)
+				{
+					continue;
+				}
+
+				// On update we should get the message passed as parameter
+				if (isset($parameters['data']['message'])
+					&& !empty($parameters['data']['message']))
+				{
+					$content = $parameters['data']['message'];
+				}
+				else
+				{
+					$content = $object->getMessage();
+				}
+
+				// On update we should get the title passed as parameter
+				if (isset($parameters['data']['subject'])
+					&& !empty($parameters['data']['subject']))
+				{
+					$title = $parameters['data']['subject'];
+				}
+				else
+				{
+					$title = $object->getTitle();
+				}
+
+				if ($this->checkContent($content) || $this->checkContent($title))
+				{
+					// When this is the first post or we edit an post we should only disable it
+					if (isset($parameters['isFirstPost'])
+						&& $parameters['isFirstPost'] === true
+						|| $actionName === 'update')
+					{
+						(new \wbb\data\post\PostAction([$object], 'disable'))->executeAction();
+
+						continue;
+					}
+
+					// When it is not we can also delete it
+					switch (POST_ANTISPAMEXTENDED_ACTION)
+					{
+						case 'delete':
+							(new \wbb\data\post\PostAction([$object], 'delete'))->executeAction();
+							break;
 
 						case 'trash':
-						$eventObj->trash();
-						break;
+							(new \wbb\data\post\PostAction([$object], 'trash'))->executeAction();
+							break;
 
-					case 'disable':
-					default:
-						$eventObj->disable();
-						break;
+						case 'disable':
+						default:
+							(new \wbb\data\post\PostAction([$object], 'disable'))->executeAction();
+							break;
+					}
 				}
 			}
 		}

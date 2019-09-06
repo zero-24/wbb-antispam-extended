@@ -3,12 +3,10 @@
 	<packageinformation>
 		<packagename><![CDATA[Anti-Spam Extended]]></packagename>
 		<packagename language="de">Anti-Spam Extended</packagename>
-		<packagename language="de-informal">Anti-Spam Extended</packagename>
 		<packagedescription>This is an generic anti-spam plugin that disables or deletes posts and threads with non-ascii chars.</packagedescription>
 		<packagedescription language="de"><![CDATA[Dies ist ein generisches Anti-Spam-Plugin, das Beiträge und Themen mit nicht-aszianischen Zeichen deaktiviert oder löscht.]]></packagedescription>
-		<packagedescription language="de-informal"><![CDATA[Dies ist ein generisches Anti-Spam-Plugin, das Beiträge und Themen mit nicht-aszianischen Zeichen deaktiviert oder löscht.]]></packagedescription>
 		<version>1.0.2</version>
-		<date>2019-08-28</date>
+		<date>2019-09-06</date>
 		<license>GPL</license>
 	</packageinformation>
 
@@ -20,6 +18,7 @@
 	<compatibility>
 		<api version="2017" />
 		<api version="2018" />
+		<api version="2019" />
 	</compatibility>
 
 	<requiredpackages>
@@ -29,17 +28,17 @@
 
 	<instructions type="install">
 		<instruction type="file" application="wbb">files.tar</instruction>
-		<instruction type="option">xml/option.xml</instruction>
-		<instruction type="userGroupOption">xml/userGroupOption.xml</instruction>
-		<instruction type="eventListener">xml/eventListener.xml</instruction>
+		<instruction type="option">option.xml</instruction>
+		<instruction type="userGroupOption">userGroupOption.xml</instruction>
+		<instruction type="eventListener">eventListener.xml</instruction>
 		<instruction type="language">languages/*.xml</instruction>
 	</instructions>
 
 	<instructions type="update" fromversion="*">
 		<instruction type="file" application="wbb">files.tar</instruction>
-		<instruction type="option">xml/option.xml</instruction>
-		<instruction type="userGroupOption">xml/userGroupOption.xml</instruction>
-		<instruction type="eventListener">xml/eventListener.xml</instruction>
+		<instruction type="option">option.xml</instruction>
+		<instruction type="userGroupOption">userGroupOption.xml</instruction>
+		<instruction type="eventListener">eventListener.xml</instruction>
 		<instruction type="language">languages/*.xml</instruction>
 	</instructions>
 </package>
