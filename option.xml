@@ -6,7 +6,7 @@
 				<categoryname>board.post.add</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
-				<enableoptions>post_antispamextended_min_posts,post_antispamextended_action,post_antispamextended_whitelist</enableoptions>
+				<enableoptions>post_antispamextended_min_posts,post_antispamextended_action,post_antispamextended_whitelist,post_antispamextended_blacklist</enableoptions>
 			</option>
 			<option name="post_antispamextended_min_posts">
 				<categoryname>board.post.add</categoryname>
@@ -22,6 +22,11 @@ trash
 delete]]></selectoptions>
 			</option>
 			<option name="post_antispamextended_whitelist">
+				<categoryname>board.post.add</categoryname>
+				<optiontype>text</optiontype>
+				<defaultvalue/>
+			</option>
+			<option name="post_antispamextended_blacklist">
 				<categoryname>board.post.add</categoryname>
 				<optiontype>text</optiontype>
 				<defaultvalue/>

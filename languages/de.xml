@@ -13,5 +13,7 @@
 		<item name="wcf.acp.option.post_antispamextended_action.description"><![CDATA[Was soll mit den Beiträgen passieren deaktiven, löschen oder endgültig löschen. Neue Threads werden immer nur deaktiviert.]]></item>
 		<item name="wcf.acp.option.post_antispamextended_whitelist"><![CDATA[Zeichen Whitelist]]></item>
 		<item name="wcf.acp.option.post_antispamextended_whitelist.description"><![CDATA[Eine komma-separierte Liste von zusätzlichen Zeichen welche erlaubt sein sollen.]]></item>
+		<item name="wcf.acp.option.post_antispamextended_blacklist"><![CDATA[Eigene Blacklist]]></item>
+		<item name="wcf.acp.option.post_antispamextended_blacklist.description"><![CDATA[Eine komma-separierte Liste von Zeichen und Wörtern welche blockiert werden sollen.]]></item>
 	</category>
 </language>

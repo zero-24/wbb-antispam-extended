@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     zero-24.antispam.extended
- * @copyright   Copyright (C) 2005 - 2019 Tobias Zulauf (https://forum.joomla.de). All rights reserved.
+ * @copyright   Copyright (C) 2019 Tobias Zulauf (https://forum.joomla.de). All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 namespace wbb\system\event\listener;
@@ -11,7 +11,7 @@ use wcf\system\event\listener\IParameterizedEventListener;
 use wcf\system\WCF;
 
 /**
- * Anti Spam Extended Listener
+ * Anti Spam Extended Post Listener
  *
  * @since  1.0.0
  */
@@ -161,6 +161,7 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 	 */
 	private function checkContent($text): bool
 	{
+		$customBlacklist  = explode(',', POST_ANTISPAMEXTENDED_BLACKLIST);
 		$whitelistedChars = explode(',', POST_ANTISPAMEXTENDED_WHITELIST);
 		$whitelistedChars = array_merge($whitelistedChars, $this->globalWitelistedChars);
 
@@ -174,6 +175,12 @@ class AntiSpamPostActionListener implements IParameterizedEventListener
 		}
 
 		$clearstring = filter_var($text, FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
+
+		// Remove the blacklisted words / chars so that it triggers the checker
+		foreach ($customBlacklist as $blacklisted)
+		{
+			$clearstring = str_replace($blacklisted, '', $clearstring);
+		}
 
 		if ($clearstring != $text)
 		{

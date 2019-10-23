@@ -5,8 +5,8 @@
 		<packagename language="de">Anti-Spam Extended</packagename>
 		<packagedescription>This is an generic anti-spam plugin that disables or deletes posts and threads with non-ascii chars.</packagedescription>
 		<packagedescription language="de"><![CDATA[Dies ist ein generisches Anti-Spam-Plugin, das Beiträge und Themen mit nicht-aszianischen Zeichen deaktiviert oder löscht.]]></packagedescription>
-		<version>1.0.3</version>
-		<date>2019-09-06</date>
+		<version>1.0.4</version>
+		<date>2019-10-24</date>
 		<license>GPL</license>
 	</packageinformation>
 
